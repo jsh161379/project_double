@@ -1,0 +1,403 @@
+@font-face {
+  font-family: "GangwonEdu_OTFBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: "GangwonEdu_OTFBoldA";
+}
+body {
+  background-color: #f3e4c2;
+}
+#menu {
+  width: 1000px; /*이게 양 옆에 여백 두고 그 가운데 공간을 얼마나 쓸지 그거임 통일시키면 좋을거같다는뜻*/
+  margin: 0 auto;
+}
+li {
+  list-style: none;
+}
+.nav_a {
+  /*메뉴바에 들어간 하이퍼링크 글씨 속성*/
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+}
+.logo {
+  width: 80%;
+  height: 80px;
+  object-fit: cover;
+}
+#menu ul li {
+  float: left; /*메뉴 왼쪽정렬*/
+  width: 20%;
+  height: 80px;
+  line-height: 80px; /*메뉴에 적힌 글씨 높이 조절*/
+  text-align: center;
+}
+#menu ul li a {
+  display: block;
+}
+#menu ul li a:hover {
+  background: white;
+}
+.maintitle {
+  /*메뉴바 전체*/
+  background-color: #f3e4c2;
+  width: 100%;
+  height: 80px;
+}
+#menu ul {
+  overflow: hidden;
+  text-align: center;
+}
+p {
+  font-size: 18px;
+}
+
+/*제품정보*/
+section {
+  display: grid;
+  padding: 20px;
+  background-color: #f8f6f2;
+}
+
+.image {
+  margin-top: 10%;
+  width: 500px;
+  max-width: 400px; /* 이미지가 부모 요소를 넘어가지 않도록 최대 폭 설정 */
+  height: 300px; /* 이미지의 가로세로 비율 유지 */
+  margin-right: 20px; /* 이미지와 텍스트 사이 간격 설정 */
+  border-radius: 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  width: 800px;
+  background-color: #fff;
+  border: 2px solid #ffffffc6; /* 흰 테두리 설정 */
+  padding: 50px; /* 내부 여백 설정 */
+  display: flex; /* 요소들을 가로로 나란히 배치하기 위해 flex 사용 */
+  border-radius: 10px; /* 테두리 둥글둥글~~ */
+  margin: 1% auto;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+div > article {
+  float: left;
+  margin-left: 10;
+  margin-bottom: 130;
+}
+
+hr {
+  width: 100%;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+li {
+  display: list-item;
+}
+
+.text2 {
+  margin: 50px;
+  margin-top: 100px;
+  height: auto;
+}
+
+.line_name {
+  border: solid 1px black;
+}
+
+.price {
+  color: rgb(184, 154, 77);
+  font-family: "Times New Roman", Times, serif;
+}
+
+/*index.html*/
+/*메인 메뉴바*/
+.maintitle_index {
+  width: 100%;
+  height: 80px;
+  z-index: 1;
+}
+#index_body {
+  padding: 80px;
+}
+
+/*메인페이지 슬라이더 부분*/
+#slider-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+  display: flex;
+}
+#slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  text-decoration: none;
+}
+.slide {
+  width: 100%;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  position: relative;
+}
+#main_img {
+  width: 100%;
+  height: 100%;
+}
+.content {
+  position: absolute;
+  bottom: 10px;
+  transform: translateX(-50%);
+  text-align: left;
+  color: black;
+  padding: 10px;
+}
+#main_h2 {
+  font-size: 35px;
+}
+#main_h4 {
+  font-size: 20px;
+}
+#main_p {
+  font-size: 17px;
+  text-align: left;
+}
+#prev,
+#next {
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  background-color: #f8f6f2;
+  color: brown;
+  border: none;
+  padding: 20px;
+  cursor: pointer;
+}
+#prev {
+  left: 30px;
+  font-size: 30px;
+}
+#next {
+  right: 30px;
+  font-size: 30px;
+}
+
+/*창업조사*/
+#survey-box {
+  display: none;
+  position: fixed;
+  top: 45%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fddeaa;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 350px;
+  height: 500px;
+  text-align: left;
+}
+form {
+  padding: 10px;
+  background-color: #fdfae6;
+}
+#close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 30px;
+}
+#sub,
+#re {
+  width: 70px;
+  height: 35px;
+  border-top: 2px solid #fddeaa;
+  border-left: 2px solid #fddeaa;
+  border-right: 2px solid #fddeaa;
+  border-bottom: 2px solid #fddeaa;
+  text-align: center;
+}
+
+/*section부분 */
+#main_se {
+  margin-left: 9%;
+  margin-right: 9%;
+}
+#main_ar {
+  margin-left: 10.5%;
+  margin-right: 10.5%;
+  overflow: hidden;
+}
+#in_te {
+  /*index 텍스트 부분*/
+  text-align: center;
+  font-size: 30px;
+  margin-top: 80px;
+  margin-bottom: 10px;
+}
+#br_img {
+  /*빵 사진*/
+  margin-top: 40px;
+  text-align: center;
+}
+#image_container {
+  display: inline-block;
+  margin-right: 20px;
+}
+#br_te {
+  width: 400px;
+  height: 100%;
+}
+
+/*랜덤출력 이미지*/
+#image-box {
+  margin: 0 auto;
+  width: 550px;
+  height: 350px;
+  overflow: hidden;
+  position: relative;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+#output-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: none;
+}
+#icon {
+  font-size: 30px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+}
+
+.hidden {
+  display: none;
+}
+
+/*뉴스*/
+#survey-box-1,
+#survey-box-2,
+#survey-box-3,
+#survey-box-4 {
+  display: none;
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fddeaa;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  width: 350px;
+  height: 500px;
+  text-align: left;
+}
+#br_img {
+  margin-top: 40px;
+  text-align: center;
+  display: inline-block;
+}
+#news_img {
+  width: 300px;
+  height: auto;
+}
+#news_container {
+  margin-right: 10px;
+  float: left;
+}
+#news_content {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.8); /* 텍스트 배경색 지정 */
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+}
+#news_a {
+  color: black;
+}
+
+/* 사이드바 아이디로 바꾸기바꾸기바꾸기*/
+#main_sm {
+  width: 100px;
+  height: 350px;
+  background: rgba(188, 108, 37, 0.2);
+  overflow: auto;
+  position: fixed;
+  top: 5%; /* 상단에 고정 */
+  left: 1%; /* 왼쪽에 고정 */
+  border-radius: 10px; /* 모서리를 둥글게 만듦 */
+}
+#main_ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#main_sa {
+  text-decoration: none;
+  padding: 10px;
+  display: block;
+  color: #ffffff;
+  font-weight: bold;
+}
+#main_sa:hover {
+  background: #333;
+}
+
+/*footer 부분*/
+footer {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+}
+
+/*이벤트 페이지*/
+#event_sec {
+  margin: 0 auto;
+  width: 1000px;
+  background-color: #ffff;
+}
+#card {
+  margin: 0 auto;
+  width: 800px;
+}
+#birthday {
+  margin: 0 auto;
+  width: 800px;
+}
+#event_sec_s {
+  margin: 0 auto;
+  width: 1000px;
+  background-color: #ffff;
+}
+#card_s {
+  margin: 0 auto;
+  width: 800px;
+}
+#birthday_s {
+  margin: 0 auto;
+  width: 800px;
+}
+#test {
+  margin: 0 auto;
+  width: 800px;
+}

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>엉빛 베이커리</title>
+    <style>
+      #menu ul li:nth-child(5) {
+        background-color: white;
+      }
+      @font-face {
+        font-family: "GangwonEdu_OTFBoldA";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff")
+          format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "GangwonEdu_OTFBoldA";
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f8f6f2;
+        font-family: Arial, sans-serif;
+      }
+
+      canvas {
+        border: 1px solid #000;
+      }
+
+      #menu {
+        width: 1000px;
+        margin: 0 auto;
+      }
+
+      li {
+        list-style: none;
+      }
+
+      .nav_a {
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+      }
+
+      .logo {
+        width: 80%;
+        height: 80px;
+        object-fit: cover;
+      }
+
+      #menu ul li {
+        float: left;
+        width: 20%;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+        background-color: #f3e4c2;
+      }
+
+      #menu ul li a {
+        display: block;
+      }
+
+      #menu ul li a:hover {
+        background: white;
+      }
+
+      .maintitle {
+        background-color: #f3e4c2;
+        width: 100%;
+        height: 80px;
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+      }
+
+      #menu ul {
+        overflow: hidden;
+        text-align: center;
+      }
+
+      .content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 80px;
+        padding: 20px;
+      }
+
+      .drawing-area {
+        width: 70%;
+      }
+
+      .function-buttons {
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px;
+      }
+
+      .function-buttons button {
+        margin-bottom: 50px; /* 버튼들 간의 간격을 조절 */
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      .order-form {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      #cakeOrderForm {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      #cakeOrderForm label {
+        margin-bottom: 5px;
+      }
+
+      #cakeOrderForm input,
+      #cakeOrderForm textarea,
+      #cakeOrderForm select,
+      #cakeOrderForm button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      #cakeOrderForm button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+
+      .image-gallery {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+      }
+
+      .image-gallery img {
+        width: 100px;
+        cursor: pointer;
+        border: 2px solid transparent;
+      }
+
+      .image-gallery img.selected {
+        border-color: #00f; /* 드래그하면 보이는 그거 */
+      }
+
+      #brushButton {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-family: "paybooc-Light", sans-serif;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+      }
+
+      #eraserButton {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-family: "paybooc-Light", sans-serif;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+      }
+
+      #clearButton {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-family: "paybooc-Light", sans-serif;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+      }
+
+      #undoButton {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-family: "paybooc-Light", sans-serif;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+      }
+
+      #saveButton {
+        position: relative;
+        border: none;
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 15px;
+        font-family: "paybooc-Light", sans-serif;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.25s;
+        border: 3px solid #f8e6e0;
+        color: #6e6e6e;
+      }
+      #colorPicker {
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="maintitle">
+      <nav id="menu">
+        <ul>
+          <li><a class="nav_a" href="introduce.html">제품 정보</a></li>
+          <li><a class="nav_a" href="price.html">빵 가격</a></li>
+          <li>
+            <a href="index.html"
+              ><img class="logo" src="./img/logo_title.png"
+            /></a>
+          </li>
+          <li><a class="nav_a" href="event.html">이벤트</a></li>
+          <li><a class="nav_a" href="makecake.html">케이크 주문제작</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div class="title">
+        <p
+          style="
+            font-size: 40px;
+            font-weight: bold;
+            color: rgb(168, 137, 84);
+            text-shadow: 1px 1px 1.2px rgb(255, 255, 255);
+            position: relative;
+            top: 90px;
+          "
+        >
+          | 케이크 주문 제작
+        </p>
+      </div>
+      <div class="content">
+        <div class="drawing-area">
+          <input type="color" id="colorPicker" value="#000000" />
+          <input type="range" id="lineWidthSlider" min="1" max="20" value="5" />
+          <canvas id="cakeCanvas" width="600" height="600"></canvas>
+          <div class="title">
+            <p
+              style="
+                font-size: 25px;
+                font-weight: bold;
+                color: rgb(168, 137, 84);
+                text-shadow: 1px 1px 1.2px rgb(255, 255, 255);
+              "
+            >
+              | 케이크 도안 선택
+            </p>
+          </div>
+          <div class="image-gallery">
+            <img
+              src="./img/케이크도안1.png"
+              alt="Image 1"
+              onclick="selectImage('케이크도안1.png')"
+            />
+            <img
+              src="./img/케이크도안2.png"
+              alt="Image 2"
+              onclick="selectImage('케이크도안2.png')"
+            />
+            <img
+              src="./img/케이크도안3.png"
+              alt="Image 3"
+              onclick="selectImage('케이크도안3.png')"
+            />
+          </div>
+        </div>
+        <div class="function-buttons">
+          <button id="brushButton">그리기</button>
+          <button id="eraserButton">지우개</button>
+          <button id="clearButton">초기화</button>
+          <button id="undoButton">되돌리기</button>
+          <button id="saveButton">이미지 저장</button>
+        </div>
+      </div>
+    </main>
+    <div class="order-form">
+      <h2>주문자 정보 및 상세내용</h2>
+      <form id="cakeOrderForm">
+        <label for="customerName">성함:</label>
+        <input type="text" id="customerName" name="customerName" required />
+
+        <label for="phoneNumber">전화번호:</label>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required />
+
+        <label for="orderDetails">상세내용:</label>
+        <textarea
+          id="orderDetails"
+          name="orderDetails"
+          rows="4"
+          required
+        ></textarea>
+
+        <label for="photoUpload">사진 업로드:</label>
+        <input
+          type="file"
+          id="photoUpload"
+          name="photoUpload"
+          accept="image/*"
+        />
+
+        <button type="submit">주문 제출</button>
+      </form>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const canvas = document.getElementById("cakeCanvas");
+        const context = canvas.getContext("2d");
+        const colorPicker = document.getElementById("colorPicker");
+        const lineWidthSlider = document.getElementById("lineWidthSlider");
+        const brushButton = document.getElementById("brushButton");
+        const eraserButton = document.getElementById("eraserButton");
+        const clearButton = document.getElementById("clearButton");
+        const undoButton = document.getElementById("undoButton");
+        const saveButton = document.getElementById("saveButton");
+        const history = [];
+
+        let isDrawing = false;
+        let isErasing = false;
+
+        function startDrawing(e) {
+          isDrawing = true;
+          draw(e);
+        }
+
+        function stopDrawing() {
+          isDrawing = false;
+          context.beginPath();
+        }
+
+        function draw(e) {
+          if (!isDrawing) return;
+
+          context.lineWidth = lineWidthSlider.value;
+          context.lineCap = "round";
+
+          if (isErasing) {
+            context.globalCompositeOperation = "destination-out";
+          } else {
+            context.globalCompositeOperation = "source-over";
+            context.strokeStyle = colorPicker.value;
+          }
+
+          context.lineTo(
+            e.clientX - canvas.offsetLeft,
+            e.clientY - canvas.offsetTop
+          );
+          context.stroke();
+          context.beginPath();
+          context.moveTo(
+            e.clientX - canvas.offsetLeft,
+            e.clientY - canvas.offsetTop
+          );
+        }
+
+        function selectImage(src) {
+          console.log("Image clicked: ", src);
+
+          const selectedImage = document.querySelector(
+            ".image-gallery img.selected"
+          );
+          if (selectedImage) {
+            selectedImage.classList.remove("selected");
+          }
+
+          const img = new Image();
+          img.src = src;
+
+          img.onload = function () {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(img, 0, 0, canvas.width, canvas.height);
+          };
+
+          // event.currentTarget.classList.add("selected");
+        }
+
+        const imageGallery = document.querySelector(".image-gallery");
+        const images = imageGallery.querySelectorAll("img");
+
+        images.forEach(function (img) {
+          img.addEventListener("click", function () {
+            selectImage(img.src);
+            img.classList.add("selected");
+          });
+        });
+
+        brushButton.addEventListener("click", function () {
+          isErasing = false;
+        });
+
+        eraserButton.addEventListener("click", function () {
+          isErasing = true;
+        });
+
+        canvas.addEventListener("mousedown", function (e) {
+          startDrawing(e);
+          saveState();
+        });
+
+        canvas.addEventListener("mousemove", draw);
+        canvas.addEventListener("mouseup", function () {
+          stopDrawing();
+          saveState();
+        });
+        canvas.addEventListener("mouseout", stopDrawing);
+
+        colorPicker.addEventListener("input", function () {
+          context.strokeStyle = colorPicker.value;
+        });
+
+        lineWidthSlider.addEventListener("input", function () {
+          context.lineWidth = lineWidthSlider.value;
+        });
+
+        clearButton.addEventListener("click", function () {
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          saveState();
+        });
+
+        undoButton.addEventListener("click", function () {
+          if (history.length > 1) {
+            history.pop();
+            context.putImageData(history[history.length - 1], 0, 0);
+          } else if (history.length === 1) {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            history.pop();
+          }
+        });
+
+        saveButton.addEventListener("click", function () {
+          const imageURL = canvas.toDataURL();
+          const a = document.createElement("a");
+          a.href = imageURL;
+          a.download = "cake_design.png";
+          a.click();
+        });
+
+        function saveState() {
+          history.push(context.getImageData(0, 0, canvas.width, canvas.height));
+        }
+      });
+    </script>
+  </body>
+</html>

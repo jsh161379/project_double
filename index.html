@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="kd">
+<head>
+  <link rel="stylesheet" href="style.css"></link>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>빵꾸케꾸</title>
+  <script src="https://kit.fontawesome.com/87b55c0272.js" crossorigin="anonymous"></script> <!--아이콘-->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> <!--슬라이더-->
+  <script>
+    //메인 슬라이더
+    $(document).ready(function () {
+        let currentSlide = 0;
+        const totalSlides = $('.slide').length;
+
+        function updateSlider() {
+          const newTransformValue = -currentSlide * 100 + '%';
+          $('#slider').css('transform', 'translateX(' + newTransformValue + ')');
+        }
+        $('#prev').click(function () {
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = totalSlides - 1;
+            }
+            updateSlider();
+        });
+        $('#next').click(function () {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0;
+            }
+            updateSlider();
+        });
+    });
+
+    // 설문조사
+    function showSurveyBox() {
+        document.getElementById('survey-box').style.display = 'block';
+    }
+    function closeSurveyBox() {
+        document.getElementById('survey-box').style.display = 'none';
+    }
+  </script>
+</head>
+  <body>
+    <header class="maintitle_index">
+      <nav id="menu">
+        <ul>
+          <li><a class="nav_a" href=introduce.html>제품 정보</a></li>
+          <li><a class="nav_a" href=price.html>빵 가격</a></li>
+          <li><a href="index.html"><img class="logo" src="./img/logo_title.png"></a></li>
+          <li><a class="nav_a" href=event.html>이벤트</a></li>
+          <li><a class="nav_a" href=makecake.html>케이크 주문제작</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <article>
+      <div id="slider-container">
+        <div id="slider">
+            <div class="slide">
+                <img id="main_img" src="img/main_img1.png" alt="Image 1">
+                <div class="content" style="margin-bottom: 21%; margin-left: 66%;">
+                    <h2 id="main_h2">빵꾸케꾸 소개<br><hr></h2>
+                    <a href="makecake.html"><h4 id="main_h4">케이크 주문제작 바로가기 >></h4></a>
+                    <p id="main_p">베이커리 판매와 함께 홈페이지를 통해 직접 그린 케이크를 <br>실물로 만나 볼 수 있는 새로운 차원의 베이커리 빵꾸케꾸입니다.<br>아이들의 동심을 지키고, 어른들의 취향을 저격하는 다양한 메뉴들이 준비되어 있습니다.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img id="main_img" src="img/main_img2.png" alt="Image 2">
+                <div class="content" style="margin-bottom: 21%; margin-left: 31%;">
+                    <h2 id="main_h2">빵꾸케꾸 가맹점<br><hr></h2>
+                    <h4 id="main_h4"><a href="javascript:void(0);" onclick="showSurveyBox()">가맹점 문의 바로가기 >></a></h4>
+                    <div id="survey-box">
+                      <span id="close-btn" onclick="closeSurveyBox()">X</span>
+                      <h2>가맹점 상담신청</h2> <hr>
+                      <form method="get">
+                          <h3>개인정보</h3>
+                          <strong>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                          <input type="text" name="name" value=""><br>
+                          <strong>전화번호</strong>
+                          <input type="text" name="number" value=""><br>
+                          <strong>이메일&nbsp;&nbsp;&nbsp;</strong>
+                          <input type="text" name="number" value=""><br>
+                          <strong>성별&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
+                          <input type="radio" name="gender" value="M">남자
+                          <input type="radio" name="gender" value="W">여자&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br><hr>
+                
+                          <h3>창업정보</h3>
+                          <strong>지역</strong>
+                          <select name "Area" id = "area">
+                            <option value = "1">경기도</option>
+                            <option value = "2">서울</option>
+                            <option value = "3">강원도</option>
+                            <option value = "4">충청도</option>
+                            <option value = "5">경상도</option>
+                            <option value = "6">전라도</option>
+                            <option value = "7">독도</option>
+                            <option value = "8">제주도</option>
+                          </select> <br>
+                          <strong>창업예상금액</strong>
+                          <input type="text" name="e" value=""> <br><hr>
+                          <p>*서비스 제공을 위한 개인정보 동의를 하십니까?</p>
+                          <input type="checkbox" name="check" value="">동의<br><hr>
+                  
+                          <input id="sub" type="submit">
+                          <input id="re" type="reset">
+                      </form>
+                      <p>수집항목 : 성명, 전화번호, 이메일<br>이용목적 : 문의 답변을 위한 연락<br>보유기간 : 최초등록일로 부터 1년<br>문의 : 041-111-2222</p>
+                  </div>
+                    <p id="main_p">주문제작 케이크를 주력으로 하는 베이커리, <br>오프라인 매장 뿐 아닌 배달전문 매장으로 뻗어 나가고 있습니다.<br><br>가맹문의 : 041-111-2222</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img id="main_img" src="img/main_img3.png" alt="Image 3">
+                <div class="content" style="margin-bottom: 23%; margin-left: 29%;">
+                    <h2 id="main_h2">빵꾸케꾸 신메뉴<br><hr></h2>
+                    <a href="introduce.html"><h4 id="main_h4">2023년 신메뉴 바로가기 >></h4></a>
+                    <p id="main_p">매년 새로운 컨셉과 제철에 맞는 재료를 사용하여<br>새롭고 예쁜 디자인에 비례하는 최선의 맛을 선보이겠습니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+    <button id="next"><i class="fa-solid fa-chevron-right"></i></button>
+    </article>
+
+    <section id=main_se>
+      <article id="main_ar">
+        <h1 id="in_te">메뉴 추천</h1>
+        <div id="br_img">
+          <div id="image_container">
+            <img id="br_te main_le" src="img/br_06.png">
+            <h3 id="main_le">초코나무 숲<br></h3>
+            <p id="main_le">달콤쌉싸름의 조합</p>
+          </div>
+          <div id="image_container">
+            <img id="br_te main_ri" src="img/br_09.png">
+            <h3>딸기 타르트<br></h3>
+            <p>유기농 딸기로 만든 시즌 메뉴</p>
+          </div>
+        </div>
+      </article>
+      <!--랜덤 이미지-->
+      <article>
+        <h1 id="in_te">오늘의 디저트 고르기</h1>
+        <div id="image-box">
+          <img id="output-image" src="" alt="Random Image">
+          <div id="icon"><i id="dacs" class="fa-solid fa-dice"></i></div>
+        </div>
+      </article>
+      <div style="clear: both;"></div>
+
+      <article>
+        <h1 id="in_te">새로운 뉴스</h1>
+        <div id="br_img">
+          <div id="image_container">
+            <img id="news_img" src="img/news_01.jpg" alt="n_img 1"> 
+            <div class="news_content">
+              <h3 class="main_h4"><a id="news_a" href="javascript:void(0);" onclick="showSurveyBox_2('survey-box-1')">그랑프리, 우승을 향해! >></a></h3>
+              <div id="survey-box-1" class="survey-box">
+                <span id="close-btn-1" onclick="closeSurveyBox_2('survey-box-1')">X</span>
+                <h2>그랑프리, 우승을 향해!</h2> <hr>
+                <img src="img/news_01.jpg" width="350px" height="200px">
+                <p>세계인의 디저트 대회인 그랑프리에서 대한민국의 대표로 대회를 준비하고 있는 감딸기 파티시엘이다.<br><br>이미 그랑프리에서 우승을 한 적이 있는 파티시엘들의 응원을 받으며 새로운 디저트를 개발하고 있는 감딸기 파티시엘은 우승을 목표로 열심히 하겠다고 말하였다. </p>
+              </div>
+            </div>
+          </div>
+          <div id="image_container">
+            <img id="news_img" src="img/news_02.jpg" alt="n_img 1"> 
+            <div class="news_content">
+              <h3 class="main_h4"><a id="news_a" href="javascript:void(0);" onclick="showSurveyBox_2('survey-box-2')">신메뉴 누설... >></a></h3>
+              <div id="survey-box-2" class="survey-box">
+                <span id="close-btn-1" onclick="closeSurveyBox_2('survey-box-2')">X</span>
+                <h2>신메뉴 누설...</h2><hr>
+                <img src="img/news_02.jpg" width="350px" height="200px">
+                <p>2023년 11월 5일, SNS에 올라온 사진 한 장이 사람들의 이목을 끌었다. <br><br>빵꾸케꾸의 단골손님들은 이번 신메뉴가 누설된 것이 아니냐며 걱정과 기대를 하였지만 이에 빵꾸케꾸 측은, 크리스마스 이벤트를 위한 준비였다고 밝혀 대중들은 역시 크리스마스엔 빵꾸케꾸라는 반응을 보였다.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div id="image_container">
+            <img id="news_img" src="img/news_03.jpg" alt="n_img 3"> 
+            <div class="news_content">
+              <h3 class="main_h4"><a id="news_a" href="javascript:void(0);" onclick="showSurveyBox_2('survey-box-3')">악덕기업?! >></a></h3>
+              <div id="survey-box-3" class="survey-box">
+                <span id="close-btn-1" onclick="closeSurveyBox_2('survey-box-3')">X</span>
+                <h2>악덕기업?!</h2><hr>
+                <img src="img/news_03.jpg" width="350px" height="200px">
+                <p>sns에 한 사진이 올라오며 빵꾸케꾸가 파티시엘들의 근무시간을 지켜주지 않는 것이 아니냐는 추측이 쏟아지고 있다.<br><br>빵꾸케꾸측에서는 안도하 파티시엘이 디저트에 대한 애정이 넘쳐 연구를 하다 시간 가는 줄 몰라 일어난 헤프닝이라고 밝혔으며 앞으로는 퇴근시간이 지나면 전기를 끊어버리겠다며 말하여 누리꾼들은 “이렇게 만드니 맛이 없을 수 없다”, “기업도 재미있어 파티시엘들이 일 할 맛이 나겠다” 등의 긍정적인 반응을 보였다.</p>
+              </div>
+            </div>
+          </div>
+          <div id="image_container">
+            <img id="news_img" src="img/news_04.jpg" alt="n_img 4"> 
+            <div class="news_content">
+              <h3 class="main_h4"><a id="news_a" href="javascript:void(0);" onclick="showSurveyBox_2('survey-box-4')">진짜 파티시엘은 누구? >></a></h3>
+              <div id="survey-box-4" class="survey-box">
+                <span id="close-btn-1" onclick="closeSurveyBox_2('survey-box-4')">X</span>
+                <h2>진짜 파티시엘은 누구?</h2><hr>
+                <img src="img/news_04.jpg" width="350px" height="200px">
+                <p>빵꾸케꾸의 파티시엘 옆을 항상 지키고 있는 수호천사를 본 일부 누리꾼은 수호천사들이 디저트를 만드는 것이 아니냐는 말을 하여 이슈가 되었다. <br><br>이에 파티시엘들은 “수호천사는 우리를 항상 응원해주는 친구” 라며 디저트를 만드는 영상을 공개하여 누리꾼들은 수호천사들이 너무 귀엽다 굿즈를 내달라고 하여 빵꾸케꾸 측에선 수호천사 굿즈를 제작하고 있다고 밝혔다.</p>
+              </div>
+            </div>
+          </div>
+          <div id="image_container" style="margin-bottom: 20px;">
+            <img src="img/news_05.jpg" alt="n_img 5" width="200px" height="200px">
+          </div>
+        </div> <div style="clear: both;"></div>
+      </article>
+    </section>
+
+    <!--사이드바-->
+    <aside id="main_sm">
+      <ul id="main_ul">
+        <li style="color: white; font-size: 20px;"><i class="fa-solid fa-bars" style="color: #ffffff;"></i>메뉴</li>
+        <li><a href="index.html" id="main_sa"><i class="fa-solid fa-arrow-up" style="color: #ffffff;"></i><div>TOP</div></a></li>
+        <li><a href="makecake.html" id="main_sa"><i class="fa-solid fa-brush" style="color: #ffffff;"></i><div>주문제작</div></a></li>
+        <li><a href="event.html" id="main_sa"><i class="fa-solid fa-gift" style="color: #ffffff;"></i><div>이벤트</div></a></li>
+        <li><a href="introduce.html" id="main_sa"><i class="fa-solid fa-book" style="color: #ffffff;"></i><div>빵소개</div></a></li>
+        <li><a href="price.html" id="main_sa"><i class="fa-solid fa-cash-register" style="color: #ffffff;"></i><div>빵가격</div></a></li>
+      </ul>
+    </aside>
+    <footer> <hr><br><br>(주)더블 크레이지 엉덩이 | 가맹점 이름 : 케꾸빵꾸 | 가맹 문의 : 041-111-2222<br><br><br></footer>
+
+    <script> // 랜덤 이미지 출력
+      const images = [
+        'img/빵.jpg',
+        'img/빵2.jpg',
+        'img/빵3.jpg',
+        'img/빵4.jpg',
+        'img/빵5.jpg',
+        'img/빵6.jpg',
+        'img/빵7.jpg',
+        'img/빵8.jpg',
+        'img/빵9.jpg',
+      ];
+    
+      document.getElementById('icon').addEventListener('click', function() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
+    
+        const outputImage = document.getElementById('output-image');
+        outputImage.src = randomImage;
+        outputImage.style.display = 'block';
+      });
+
+      function showSurveyBox_2(boxId) {
+        document.getElementById(boxId).style.display = 'block';
+      }
+      function closeSurveyBox_2(boxId) {
+        document.getElementById(boxId).style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
